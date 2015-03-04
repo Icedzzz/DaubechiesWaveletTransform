@@ -10,3 +10,13 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+/DaubechiesWaveletTransform/nbproject/private/
+/main/nbproject/private/
+/DaubClass/nbproject/private/
+/DaubClass/nbproject/
+/DaubClass/build.xml
+/DaubClass/build/
+/build/
+/nbproject/private/
+/nbproject/
+/build.xml

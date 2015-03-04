@@ -17,7 +17,7 @@ private static final double SQRT2 = sqrt(2);
         double[] diff = new double[size];
         //First step interpolates between even and odd elements of the series.
         for (int i = 0; i < size/2; i++) {
-            interp[i]=input[2*i] + SQRT3 +input[2*i+1];
+            interp[i]=input[2*i] + SQRT3 * input[2*i+1];
             }
         
         //Calculate difference between interpolation and actual value.
@@ -38,7 +38,7 @@ private static final double SQRT2 = sqrt(2);
          
          double[] retarr = new double[size];
         for(int i =0;i<size/2;i++) retarr[i]=interp[i];
-        for(int i =size/2;i<size;i++)retarr[i]=diff[i];
+        for(int i =size/2;i<size;i++) retarr[i]=diff[i];
         return retarr;
          
     }

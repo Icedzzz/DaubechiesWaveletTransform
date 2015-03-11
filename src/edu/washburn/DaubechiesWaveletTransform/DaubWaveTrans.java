@@ -62,7 +62,7 @@ public class DaubWaveTrans {
 
     }
 
-    public double[] getCoeffs(double[] input, int limit) {
+    public static double[] getCoeffs(double[] input, int limit) {
         double[] tmp = DaubWaveTrans(input, limit);
         return Arrays.copyOfRange(tmp, 0, (int) (input.length / pow(2, limit)));
     }

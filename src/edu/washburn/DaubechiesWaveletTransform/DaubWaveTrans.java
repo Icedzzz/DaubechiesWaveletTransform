@@ -1,5 +1,6 @@
 package edu.washburn.DaubechiesWaveletTransform;
 
+import static java.lang.Math.pow;
 import static java.lang.Math.sqrt;
 import java.util.Arrays;
 
@@ -12,11 +13,11 @@ public class DaubWaveTrans {
     private static final double SQRT3 = sqrt(3);
     private static final double SQRT2 = sqrt(2);
 
-    public static double[] DaubWaveTrans(double[] input) {
+    public static double[] DaubWaveTrans(double[] input, int limit) {
 // This function assumes that input.length=2^n, n>1
         double[] output = new double[input.length];
-
-        while(input.length > 1)  {
+        
+        while( input.length > ((int)((output.length)/pow(2,(double)limit)) | 1 ) )  {
             double[] interp = new double[input.length / 2];
             double[] diff = new double[input.length / 2];
             //First step does interpolation between pairs of sequential elelments.
@@ -59,5 +60,10 @@ public class DaubWaveTrans {
         }
         return output;
 
+    }
+    
+    public double[] getCoeffs(double[] input, int limit){
+        double[] tmp = DaubWaveTrans(input,limit);
+        return Arrays.copyOfRange(tmp,0,(int)(input.length/pow(2,limit)));
     }
 }

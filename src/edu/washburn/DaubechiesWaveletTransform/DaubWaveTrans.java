@@ -17,21 +17,25 @@ public class DaubWaveTrans {
         int size = input.length;
         double[] interp = new double[size];
         double[] diff = new double[size];
-        //First step interpolates between even and odd elements of the series.
+        //First step does interpolation between pairs of sequential elelments.
+        //1,2; 2,3; 4,5 etc.
         for (int i = 0; i < size / 2; i++) {
             interp[i] = input[2 * i] + SQRT3 * input[2 * i + 1];
         }
 
-        //Calculate difference between interpolation and actual value.
+        //Calculate weighted difference between input previous 2 interp values.
+        //The pre-for loop line handles index 0 by wrapping around. 
         diff[0] = input[1] - SQRT3 / 4.0 * interp[0] - (SQRT3 - 2) / 4.0 * interp[size / 2 - 1];
         for (int i = 1; i < size / 2; i++) {
             diff[i] = input[2 * i + 1] - SQRT3 / 4.0 * interp[i] - (SQRT3 - 2) / 4.0 * interp[i - 1];
         }
 
-        //Adjust interpolations by difference. (Correction)
+        //Adjust interpolations towards the next difference value. (Correction)
         for (int i = 0; i < size / 2 - 1; i++) {
             interp[i] = interp[i] - diff[i + 1];
         }
+        //Deal with final element correct by wrapping around. 
+        //Overwrites previous entry.
         interp[size / 2 - 1] = interp[size / 2 - 1] - diff[0];
 
         //Normalize vectors.

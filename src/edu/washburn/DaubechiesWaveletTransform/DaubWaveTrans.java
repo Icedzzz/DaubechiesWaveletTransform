@@ -16,8 +16,8 @@ public class DaubWaveTrans {
     public static double[] DaubWaveTrans(double[] input, int limit) {
 // This function assumes that input.length=2^n, n>1
         double[] output = new double[input.length];
-        
-        while( input.length > ((int)((output.length)/pow(2,(double)limit)) | 1 ) )  {
+
+        while (input.length > ((int) ((output.length) / pow(2, (double) limit)) | 1)) {
             double[] interp = new double[input.length / 2];
             double[] diff = new double[input.length / 2];
             //First step does interpolation between pairs of sequential elelments.
@@ -61,9 +61,9 @@ public class DaubWaveTrans {
         return output;
 
     }
-    
-    public double[] getCoeffs(double[] input, int limit){
-        double[] tmp = DaubWaveTrans(input,limit);
-        return Arrays.copyOfRange(tmp,0,(int)(input.length/pow(2,limit)));
+
+    public double[] getCoeffs(double[] input, int limit) {
+        double[] tmp = DaubWaveTrans(input, limit);
+        return Arrays.copyOfRange(tmp, 0, (int) (input.length / pow(2, limit)));
     }
 }

@@ -20,3 +20,5 @@ hs_err_pid*
 /nbproject/private/
 /nbproject/
 /build.xml
+DaubechiesWaveletTransform.iml
+.idea
